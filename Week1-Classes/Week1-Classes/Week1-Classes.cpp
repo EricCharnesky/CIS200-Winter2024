@@ -1,7 +1,102 @@
 
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+class Chair {
+private:
+	string color;
+	double heightInMeters;
+	bool hasWheels;
+
+public:
+	// default - no argument constructor
+	Chair() {
+		color = "";
+		heightInMeters = 0;
+		hasWheels = false;
+	}
+
+	// parametized constructor
+	Chair(string color, double heightInMeters, bool hasWheels) {
+		//setColor(color);
+		this->color = color;
+		setHeightInMeters(heightInMeters);
+		setHasWheels(hasWheels);
+	}
+
+	/*void setColor(string color) {
+		this->color = color;
+	};*/
+
+	string getColor() {
+		return color;
+	}
+
+	double getHeightInMeters() {
+		return heightInMeters;
+	}
+
+	void setHeightInMeters(double heightInMeters) {
+		if (heightInMeters < 0) {
+			// TODO - figure out exceptions
+			heightInMeters = 0;
+		}
+		this->heightInMeters = heightInMeters;
+
+		if (heightInMeters < 0) {
+			// TODO - figure out exceptions
+			this->heightInMeters = 0;
+		}
+		else {
+			this->heightInMeters = heightInMeters;
+		}
+	}
+
+	void setHasWheels(bool hasWheels) {
+		this->hasWheels = hasWheels;
+	}
+
+	bool getHasWheels() {
+		return hasWheels;
+	}
+};
+
+
+void printChairDetails(Chair chair) {
+	cout << "Color: " << chair.getColor() << endl;
+	cout << "Height in meters: " << chair.getHeightInMeters() << endl;
+	cout << "Has Wheels: " << chair.getHasWheels() << endl;
+}
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Chair ericsChair;
+	//ericsChair.setColor("blue");
+	ericsChair.setHasWheels(true);
+	ericsChair.setHeightInMeters(.7);
+
+	Chair jebsChair("red", .5, false);
+	//jebsChair.setColor("red");
+	//jebsChair.setHasWheels(false);
+	//jebsChair.setHeightInMeters(.5);
+
+	printChairDetails(ericsChair);
+	printChairDetails(jebsChair);
+
+	jebsChair = ericsChair;
+
+	printChairDetails(ericsChair);
+	printChairDetails(jebsChair);
+
+	ericsChair.setHeightInMeters(1);
+
+	printChairDetails(ericsChair);
+	printChairDetails(jebsChair);
+
+
+
+
 }
