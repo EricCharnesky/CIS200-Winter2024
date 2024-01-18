@@ -9,6 +9,7 @@ private:
 	string color;
 	double heightInMeters;
 	bool hasWheels;
+	static int id;
 
 public:
 	// default - no argument constructor
