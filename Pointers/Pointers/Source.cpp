@@ -29,6 +29,7 @@ int main()
 	cout << "Eric's score 0: " << eric.getScore(0) << endl;
 	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
 
+	// copy constructor, and then the assignment operator
 	eric2 = Student(eric);
 
 	Student eric3 = eric2;
