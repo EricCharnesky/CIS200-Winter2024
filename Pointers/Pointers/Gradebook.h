@@ -24,7 +24,6 @@ public:
 		this->numberOfStudents = gradebook.numberOfStudents;
 		this->students = new Student[numberOfStudents];
 		for (int index = 0; index < numberOfStudents; index++) {
-			// this isn't a 'deep' copy yet
 			this->students[index] = gradebook.students[index];
 		}
 	}
@@ -36,7 +35,6 @@ public:
 			this->numberOfStudents = gradebook.numberOfStudents;
 			this->students = new Student[numberOfStudents];
 			for (int index = 0; index < numberOfStudents; index++) {
-				// this isn't a 'deep' copy yet
 				this->students[index] = gradebook.students[index];
 			}
 		}

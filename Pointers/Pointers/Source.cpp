@@ -21,6 +21,39 @@ void quadraticSolver(int a, int b, int c, double& xIntercept1, double& xIntercep
 
 int main()
 {
+	Student eric = Student("Eric", 5, 100);
+	Student eric2 = Student(eric);
+
+	eric.setScore(0, 42);
+	cout << "After setting Eric score to 42" << endl;
+	cout << "Eric's score 0: " << eric.getScore(0) << endl;
+	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
+
+	eric2 = Student(eric);
+
+	cout << "After copy constructor" << endl;
+	cout << "Eric's score 0: " << eric.getScore(0) << endl;
+	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
+
+	eric.setScore(0, 77);
+
+	cout << "After setting Eric score to 77" << endl;
+	cout << "Eric's score 0: " << eric.getScore(0) << endl;
+	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
+
+	eric2 = eric;
+
+	cout << "After assignment operator" << endl;
+	cout << "Eric's score 0: " << eric.getScore(0) << endl;
+	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
+
+	eric.setScore(0, 100);
+
+	cout << "After setting Eric score to 100" << endl;
+	cout << "Eric's score 0: " << eric.getScore(0) << endl;
+	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
+
+
 	Gradebook cis200GradeBook("CIS 200", 35);
 
 	Student bob = cis200GradeBook.getStudent(0);
