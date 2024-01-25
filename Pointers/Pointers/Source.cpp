@@ -31,6 +31,8 @@ int main()
 
 	eric2 = Student(eric);
 
+	Student eric3 = eric2;
+
 	cout << "After copy constructor" << endl;
 	cout << "Eric's score 0: " << eric.getScore(0) << endl;
 	cout << "Eric 2's score 0: " << eric2.getScore(0) << endl;
