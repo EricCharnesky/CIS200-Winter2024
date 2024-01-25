@@ -14,12 +14,7 @@ private:
 	double score;
 	int* scores;
 
-	void initializeScoreArray() {
-		// TODO - FIX ME
-		/*if (scores != nullptr) {
-			delete[] scores;
-		}*/
-		
+	void initializeScoreArray() {		
 		scores = new int[MAX_SCORES];
 		for (int index = 0; index < MAX_SCORES; index++) {
 			scores[index] = UNSCORED;
@@ -61,6 +56,7 @@ public:
 		name = other.name;
 		id = other.id;
 		score = other.score;
+		delete[] scores;
 		initializeScoreArray();
 		for (int index = 0; index < MAX_SCORES; index++) {
 			scores[index] = other.scores[index];
