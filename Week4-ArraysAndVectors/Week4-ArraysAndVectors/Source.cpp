@@ -17,7 +17,50 @@ void printBoard(ConnectFour& game)
 	cout << "---------------" << endl;
 }
 
+vector<int> reverse(vector<int>& toReverse) {
+	vector<int> toReturn;
+
+	for (int index = 0; index < toReverse.size(); index++) {
+		toReturn.push_back(toReverse.at(toReverse.size() - 1 - index));
+	}
+
+	return toReturn;
+}
+
+void reverseInPlace(vector<int>& toReverse) {
+	for (int index = 0; index < toReverse.size() / 2; index++) {
+		int temp = toReverse.at(index);
+		toReverse.at(index) = toReverse.at(toReverse.size() - 1 - index);
+		toReverse.at(toReverse.size() - 1 - index) = temp;
+	}
+}
+
+void printVector(vector<int>& toPrint) {
+	for (int index = 0; index < toPrint.size(); index++) {
+		cout << toPrint.at(index) << endl;
+	}
+}
+
 int main() {
+
+	vector<int> numbers2 = { 1,2,3,4, 5 };
+
+	cout << "before reverse in place" << endl;
+	printVector(numbers2);
+	reverseInPlace(numbers2);
+	
+	cout << "after reverse in place" << endl;
+	printVector(numbers2);
+
+	
+	vector<int> newNumbers = reverse(numbers2);
+	cout << "after reverse" << endl;
+	printVector(newNumbers);
+	
+
+
+	
+
 
 	cout << "How many numbers do you want to store?" << endl;
 	int numberOfValues;
