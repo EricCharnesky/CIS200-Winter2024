@@ -45,6 +45,7 @@ public:
 		for (int index = 0; index < maxNumberOfFightingPets; index++) {
 			pets[index] = trainer.pets[index];
 		}
+		return *this;
 	}
 
 	~Trainer() {
