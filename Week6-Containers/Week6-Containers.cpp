@@ -7,11 +7,30 @@
 #include <queue>
 #include <deque>
 #include <algorithm>
+#include "Student.h"
+
 
 using namespace std;
 
+bool compareStudents(Student& first, Student& second) {
+    return first.getName() < second.getName();
+}
+
 int main()
 {
+    vector<Student> students;
+
+    
+    students.push_back(Student(3, "Jeb"));
+    students.push_back(Student(2, "Journey"));
+    students.push_back(Student(1, "Eric"));
+
+    sort(students.begin(), students.end(), compareStudents);
+
+    for (Student student : students) {
+        cout << student.getName() << endl;
+    }
+
     vector<int> scores;
 
     int score = 0;
@@ -24,6 +43,24 @@ int main()
         }
         
     }
+
+    auto beginning = scores.begin();
+
+    while (beginning != scores.end()) {
+        cout << *beginning << endl;
+        beginning++;
+    }
+
+    int* dynamicScores = new int[5];
+    for (int index = 0; index < 5; index++) {
+        dynamicScores[index] = index + 1;
+    }
+
+    for (int value = 0; value < 5; value++) {
+        cout << "Address: " << dynamicScores << "Value: " << *dynamicScores << endl;
+        dynamicScores++;
+    }
+    
 
     int highestScore = scores.at(0);
 
