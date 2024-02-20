@@ -28,5 +28,9 @@ int main()
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
     };
 
+    vector<vector<char>> lessLinesBoard = vector<vector<char>>(8, vector<char>(8, ' '));
+
     printBoard(board);
+
+    printBoard(lessLinesBoard);
 }
