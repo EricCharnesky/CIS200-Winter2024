@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "MazeSolver.h"
+#include "Sudoku.h"
 
 using namespace std;
 
@@ -79,6 +80,24 @@ void countDown(int number) {
 
 int main()
 {
+    vector<vector<int>> board{
+        { 0, 7, 0, 0, 2, 0, 0, 4, 6 },
+        { 0, 6, 0, 0, 0, 0, 8, 9, 0 },
+        { 2, 0, 0, 8, 0, 0, 7, 1, 5 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
+
+    Sudoku sudokuSolver(board);
+
+    cout << sudokuSolver.toString();
+    cout << endl;
+
+
     vector<vector<char>> maze{
         { 'S', 'X', 'X', 'X', ' ' },
         { ' ', ' ', ' ', 'X', ' ' },
