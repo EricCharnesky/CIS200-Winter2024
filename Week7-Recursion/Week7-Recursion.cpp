@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include "MazeSolver.h"
 
 using namespace std;
 
@@ -75,53 +76,6 @@ void countDown(int number) {
     }
 }
 
-void printMaze(vector<vector<char>> maze) {
-    for (vector<char> row : maze) {
-        for (char space : row) {
-            cout << space;
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-bool canGoTo(vector<vector<char>> maze, int rowIndex, int columnIndex) {
-    return rowIndex >= 0 && rowIndex < maze.size()
-        && columnIndex >= 0 && columnIndex < maze.at(rowIndex).size()
-        && ( maze.at(rowIndex).at(columnIndex) == ' ' ||
-            maze.at(rowIndex).at(columnIndex) == 'E');
-}
-
-void mazeSolver(vector<vector<char>> maze, int rowIndex, int columnIndex) {
-    if (maze.at(rowIndex).at(columnIndex) == 'E') {
-        cout << "Found a solution!" << endl;
-        printMaze(maze);
-        
-        return;
-    }
-    // mark the current space
-    maze.at(rowIndex).at(columnIndex) = '.';
-    
-
-    // U R D L
-    // can go up?
-    if (canGoTo(maze, rowIndex-1, columnIndex)) {
-        mazeSolver(maze, rowIndex - 1, columnIndex);
-    }
-    // can go right?
-    if (canGoTo(maze, rowIndex, columnIndex+1)) {
-        mazeSolver(maze, rowIndex, columnIndex + 1);
-    }
-    // can go down?
-    if (canGoTo(maze, rowIndex+1, columnIndex)) {
-        mazeSolver(maze, rowIndex+1, columnIndex);
-    }
-    // can go left?
-    if (canGoTo(maze, rowIndex, columnIndex - 1)) {
-        mazeSolver(maze, rowIndex, columnIndex - 1);
-    }
-
-}
 
 int main()
 {
@@ -133,7 +87,10 @@ int main()
         { ' ', 'X', ' ', ' ', ' ' }
     };
 
-    mazeSolver(maze, 0, 0);
+    MazeSolver solver(maze);
+
+    cout << solver.toString() << endl;
+    cout << "shortest solution is " << solver.getShortestNumberOfStepsForSolution() << " steps" << endl;
 
     
 

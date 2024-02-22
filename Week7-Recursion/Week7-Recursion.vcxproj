@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="Week7-Recursion.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MazeSolver.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
