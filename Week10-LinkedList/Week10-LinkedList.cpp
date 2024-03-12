@@ -15,6 +15,13 @@ int main()
         cout << list.pop() << endl;
     }
 
-    
-    
+    CircularDoublyLinkedList<int> circularLinkedList;
+
+    circularLinkedList.add_first(2);
+    circularLinkedList.add_last(3);
+    circularLinkedList.add_last(4);
+
+    while (circularLinkedList.size() != 0) {
+        cout << circularLinkedList.pop_last() << endl;
+    }
 }

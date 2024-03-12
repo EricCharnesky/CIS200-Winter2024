@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+using namespace std;
+
 template <typename T>
 class CircularDoublyLinkedList {
 
@@ -42,10 +44,10 @@ private:
 
 
 public:
-	LinkedList() {
+	CircularDoublyLinkedList() {
 		dummyNode = new Node<T>(T(), nullptr, nullptr);
 		dummyNode->next = dummyNode;
-		dummyNode->previous  dummyNode;
+		dummyNode->previous = dummyNode;
 		numberOfItems = 0;
 	}
 
@@ -62,7 +64,7 @@ public:
 	// O(1)
 	T pop_last() {
 		if (numberOfItems == 0) {
-			throw runtime_error("list is empty");
+			throw logic_error("list is empty");
 		}
 		return remove(dummyNode->previous);
 	}
@@ -70,7 +72,7 @@ public:
 	// O(1)
 	T pop_first() {
 		if (numberOfItems == 0) {
-			throw runtime_error("list is empty");
+			throw logic_error("list is empty");
 		}
 		return remove(dummyNode->next);
 	}
