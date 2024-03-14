@@ -1,11 +1,15 @@
 #pragma once
 
+#pragma once
+
 #include <stdexcept>
 
 using namespace std;
 
+
+
 template <typename T>
-class CircularDoublyLinkedList {
+class PositionalLinkedList {
 
 private:
 	template <typename T>
@@ -43,13 +47,85 @@ private:
 	}
 
 
-
 public:
-	CircularDoublyLinkedList() {
+	PositionalLinkedList() {
 		dummyNode = new Node<T>(T(), nullptr, nullptr);
 		dummyNode->next = dummyNode;
 		dummyNode->previous = dummyNode;
 		numberOfItems = 0;
+	}
+
+
+	template <typename T>
+	class Position {
+	public:
+		Node<T>* node;
+		PositionalLinkedList<T>* list;
+
+		Position(Node<T>* node, PositionalLinkedList<T>* list) {
+			this->node = node;
+			this->list = list;
+		}
+		T data() {
+			return this->node->data;
+		}
+	};
+
+	Node<T>* validatePosition(PositionalLinkedList<T>::Position<T>* position)
+	{
+		if (position->list != this) {
+			throw logic_error("This position is not from this list");
+		}
+		return position->node;
+	}
+
+	Position<T>* makePosition(Node<T>* node) {
+		if (node == dummyNode) {
+			return nullptr;
+		}
+		return new Position<T>(node, this);
+	}
+
+	// O(1)
+	Position<T>* first() {
+		return makePosition(dummyNode->next);
+	}
+
+	// O(1)
+	Position<T>* last() {
+		return makePosition(dummyNode->previous);
+	}
+
+	// return what comes after this position
+	// O(1)
+	Position<T>* after(Position<T>* position) {
+		auto node = validatePosition(position);
+		return makePosition(node->next);
+	}
+
+	// return what comes before this position
+	// O(1)
+	Position<T>* before(Position<T>* position) {
+		auto node = validatePosition(position);
+		return makePosition(node->previous);
+	}
+
+	// create a new node between this positions node and the previous node
+	// returns the new node's position
+	// O(1)
+	Position<T>* add_before(Position<T>* position, T data) {
+		auto node = validatePosition(position);
+		addBetween(data, node, node->previous);
+		return makePosition(node->previous);
+	}
+
+	// create a new node between this positions node and the previous node
+	// returns the new node's position
+	// O(1)
+	Position<T>* add_after(Position<T>* position, T data) {
+		auto node = validatePosition(position);
+		addBetween(data, node->next, node);
+		return makePosition(node->next);
 	}
 
 	// O(1)
@@ -109,7 +185,7 @@ public:
 			throw length_error("invalid index");
 		}
 		Node<T>* currentNode = dummyNode->next;
-		for ( int currentIndex = 0; currentIndex < index; currentIndex++){
+		for (int currentIndex = 0; currentIndex < index; currentIndex++) {
 
 			currentNode = currentNode->next;
 		}
@@ -130,5 +206,6 @@ public:
 		currentNode->data = value;
 		return oldData;
 	}
+
 
 };

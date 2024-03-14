@@ -2,6 +2,7 @@
 #include <iostream>
 #include "LinkedList.h"
 #include "CircularDoublyLinkedList.h"
+#include "PositionalLinkedList.h"
 
 using namespace std;
 
@@ -21,7 +22,25 @@ int main()
     circularLinkedList.add_last(3);
     circularLinkedList.add_last(4);
 
+    circularLinkedList.print_forward();
+    circularLinkedList.print_backwards();
+
     while (circularLinkedList.size() != 0) {
         cout << circularLinkedList.pop_last() << endl;
     }
+
+    
+    PositionalLinkedList<string> names;
+
+    names.add_first("Eric");
+    names.add_last("Jeb");
+    names.add_last("Vivi");
+
+    auto currentPosition = names.first();
+    names.add_after(currentPosition, "Joy");
+    while (currentPosition != nullptr) {
+        cout << currentPosition->data() << endl;
+        currentPosition = names.after(currentPosition);
+    }
+    
 }
