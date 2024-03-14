@@ -37,7 +37,7 @@ int main()
     names.add_last("Vivi");
 
     auto currentPosition = names.first();
-    names.add_after(currentPosition, "Joy");
+    auto joysPosition = names.add_after(currentPosition, "Joy");
     while (currentPosition != nullptr) {
         cout << currentPosition->data() << endl;
         currentPosition = names.after(currentPosition);
